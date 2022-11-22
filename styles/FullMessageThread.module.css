@@ -1,0 +1,50 @@
+.container {
+	padding: 0.4rem;
+	height: 100vh;
+	width: 80%;
+	display: flex;
+	flex-direction: column;
+}
+
+.message__container {
+	margin-top: 10rem;
+	display: flex;
+	flex-direction: column;
+	height: 95vh;
+}
+
+.message__input__container {
+	width: 100%;
+	margin-top: 10rem;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+	justify-content: flex-start;
+}
+
+.message__input {
+	width: 95%;
+	height: 5rem;
+	font-size: 3rem;
+	padding: 0.2rem 0.4rem;
+	border: none;
+	border-radius: 3px;
+	margin-right: 3.2rem;
+}
+
+.message__send__button {
+	border: none;
+	background-color: inherit;
+	cursor: pointer;
+}
+
+.message__send__button:hover {
+	filter: sepia(100%) saturate(300%) brightness(70%) hue-rotate(180deg);
+}
+.message__send__button:active {
+	transform: scale(0.9);
+	filter: sepia(100%) saturate(300%) brightness(70%) hue-rotate(180deg);
+}
+
+.message__send__icon:hover {
+}

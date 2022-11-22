@@ -1,0 +1,15 @@
+.nav__container {
+	position: fixed;
+	top: 0;
+	left: 100;
+	width: 77.5%;
+	height: 7.5rem;
+	border-bottom: 1px solid #6e6c6c;
+}
+
+.sender__name {
+	font-size: 3.2rem;
+	font-weight: bold;
+	margin-bottom: 0.5rem;
+	margin-top: 2rem;
+}
