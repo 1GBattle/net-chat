@@ -1,16 +1,17 @@
 import Image from 'next/image'
 import React from 'react'
+import { useAppSelector } from '../redux/hooks'
 import styles from '../styles/Sidebar.module.css'
-import MessageThreads from './MessageThread'
 import MessageThreadList from './MessageThreadList'
 
 const Sidebar = () => {
+	const user = useAppSelector((state) => state.userSlice.user)
 	const [searchTerm, setSearchTerm] = React.useState<string>('')
 
 	return (
 		<div className={`${styles.container}`}>
 			<div className={`${styles.sidebar__heading__container}`}>
-				<h1 className={`${styles.username__heading}`}>UserName here</h1>
+				<h1 className={`${styles.username__heading}`}>{user.userName}</h1>
 
 				<div className={`${styles.sidebar__heading__button__container}`}>
 					<button className={`${styles.new__message__button}`}>
@@ -42,13 +43,13 @@ const Sidebar = () => {
 					value={searchTerm}
 					onChange={(e) => setSearchTerm(e.target.value)}
 				/>
-				<Image
+				{/* <Image
 					className={`${styles.search__icon}`}
 					src={'/search-icon.png'}
 					width={32}
 					height={32}
 					alt='search icon'
-				/>
+				/> */}
 			</div>
 
 			<div className={`${styles.button__container}`}>

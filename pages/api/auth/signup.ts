@@ -1,6 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
-import { auth } from '../../../firebase/firebase'
+import { auth, db } from '../../../firebase/firebase'
+import UUIDClass from 'uuidjs'
+import User from '../../../models/UserModel'
+import { doc, setDoc } from 'firebase/firestore'
 
 const signup = async (req: NextApiRequest, res: NextApiResponse) => {
 	if (req.method === 'POST') {
@@ -10,8 +13,18 @@ const signup = async (req: NextApiRequest, res: NextApiResponse) => {
 			await createUserWithEmailAndPassword(auth, email, password)
 				.then((userCredential) => {
 					// Signed in
-					const user = userCredential.user
-					res.status(200).json({ message: 'User created', user })
+					let user = userCredential.user
+					const userInfo = {
+						email: user.email,
+						firstName,
+						lastName,
+						userName,
+						messages: [],
+						userId: UUIDClass.generate()
+					} as User
+
+					setDoc(doc(db, 'users', userInfo.userId), userInfo)
+					res.status(200).json({ message: 'User created', userInfo })
 				})
 				.catch((error) => {
 					const errorCode = error.code

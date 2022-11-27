@@ -3,9 +3,13 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import styles from '../styles/LoginSignupForm.module.css'
 import axios from 'axios'
+import { useAppDispatch, useAppSelector } from '../redux/hooks'
+import { setUser } from '../redux/userSlice'
 
 const LoginSignupForm = () => {
 	const router = useRouter()
+	const dispatch = useAppDispatch()
+
 	const [isLoginShowing, setIsLoginShowing] = React.useState<boolean>(true)
 	const [userName, setUserName] = React.useState<string>('')
 	const [password, setPassword] = React.useState<string>('')
@@ -28,7 +32,10 @@ const LoginSignupForm = () => {
 				email,
 				password
 			})
-			.then((res) => (res.status === 200 ? router.push('/') : null))
+			.then((res) => {
+				dispatch(setUser(res.data.user))
+				res.status === 200 ? router.push('/') : null
+			})
 
 		router.push('/')
 	}
@@ -44,7 +51,10 @@ const LoginSignupForm = () => {
 				firstName,
 				lastName
 			})
-			.then((res) => (res.status === 200 ? router.push('/') : null))
+			.then((res) => {
+				dispatch(setUser(res.data.userInfo))
+				res.status === 200 ? router.push('/') : null
+			})
 	}
 
 	return (
