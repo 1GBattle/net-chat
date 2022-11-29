@@ -5,10 +5,12 @@ import Sidebar from '../components/Sidebar'
 import styles from '../styles/Home.module.css'
 import { useRouter } from 'next/router'
 import { useAppSelector } from '../redux/hooks'
+import { useState } from 'react'
 
 const Home: NextPage = () => {
 	const user = useAppSelector((state) => state.userSlice.user)
 	const router = useRouter()
+	const [isMessageThreadOpen, setIsMessageThreadOpen] = useState<boolean>(false)
 
 	if (!user) {
 		router.push('/login')
@@ -18,9 +20,11 @@ const Home: NextPage = () => {
 			<div className={styles.container}>
 				<Sidebar />
 
-				<div className={styles.main__container}>
-					<FullMessageThread />
-				</div>
+				{isMessageThreadOpen && (
+					<div className={styles.main__container}>
+						<FullMessageThread />
+					</div>
+				)}
 
 				<div className={styles.members__sidebar}>
 					<MembersSidebar />

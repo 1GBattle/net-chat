@@ -7,6 +7,8 @@ import MessageThreadList from './MessageThreadList'
 const Sidebar = () => {
 	const user = useAppSelector((state) => state.userSlice.user)
 	const [searchTerm, setSearchTerm] = React.useState<string>('')
+	const [isNewMessageModalOpen, setIsNewMessageModalOpen] =
+		React.useState<boolean>(false)
 
 	return (
 		<div className={`${styles.container}`}>
@@ -14,7 +16,10 @@ const Sidebar = () => {
 				<h1 className={`${styles.username__heading}`}>{user.userName}</h1>
 
 				<div className={`${styles.sidebar__heading__button__container}`}>
-					<button className={`${styles.new__message__button}`}>
+					<button
+						className={`${styles.new__message__button}`}
+						onClick={() => setIsNewMessageModalOpen(!isNewMessageModalOpen)}
+					>
 						<Image
 							className={`${styles.new__single__msg__image}`}
 							src={'/new-single.png'}
@@ -39,17 +44,10 @@ const Sidebar = () => {
 				<input
 					className={`${styles.messageThreads__search__input}`}
 					type='text'
-					placeholder='Search...'
+					placeholder='Search messages...'
 					value={searchTerm}
 					onChange={(e) => setSearchTerm(e.target.value)}
 				/>
-				{/* <Image
-					className={`${styles.search__icon}`}
-					src={'/search-icon.png'}
-					width={32}
-					height={32}
-					alt='search icon'
-				/> */}
 			</div>
 
 			<div className={`${styles.button__container}`}>
