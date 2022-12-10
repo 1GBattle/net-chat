@@ -18,7 +18,7 @@ const Home: NextPage = () => {
   const user = useAppSelector((state) => state.userSlice.user)
   const router = useRouter()
   const [isNewMessageModalOpen, setIsNewMessageModalOpen] =
-    useState<boolean>(true)
+    useState<boolean>(false)
   const [isMessageThreadOpen, setIsMessageThreadOpen] = useState<boolean>(false)
   const isUserAuthenticated = useRef<boolean>(false)
 

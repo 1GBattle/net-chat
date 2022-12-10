@@ -2,7 +2,11 @@ import React from 'react'
 import styles from '../styles/UserSearchResult.module.css'
 
 interface Props {
-  user: { fullName: string; userName: string; imgUrl?: string }
+  user: {
+    fullName: string
+    userName: string
+    imgUrl?: string
+  }
 }
 
 const UserSearchResult: React.FC<Props> = ({ user }) => {

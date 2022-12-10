@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import styles from '../styles/NewMessageModal.module.css'
 import axios from 'axios'
 import UserSearchResult from './UserSearchResult'
+import { useAppSelector } from '../redux/hooks'
 
 interface Props {
   setIsNewMessageModalOpen: React.Dispatch<React.SetStateAction<boolean>>
@@ -19,6 +20,7 @@ const NewMessageModal: React.FC<Props> = ({
   const [isBrowser, setIsBrowser] = React.useState(false)
   const [userQuery, setUserQuery] = React.useState<string>('')
   const [searchResults, setSearchResults] = React.useState<any[]>([])
+  const user = useAppSelector((state) => state.userSlice.user)
 
   const handleInputSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -28,7 +30,14 @@ const NewMessageModal: React.FC<Props> = ({
     })
   }
 
-  const handleSearchResultClick = () => {
+  const handleSearchResultClick = async (userIds: {
+    idFrom: string
+    idTo: string
+  }) => {
+    await axios.post('/api/messaging/createMessageThread', {
+      userIds,
+    })
+
     setIsNewMessageModalOpen(false)
   }
 
@@ -59,19 +68,22 @@ const NewMessageModal: React.FC<Props> = ({
               </form>
             </div>
 
-            {searchResults.length > 0 && (
-              <div
-                className={styles.search__results}
-                onClick={() => handleSearchResultClick()}
-              >
-                {searchResults.map((user) => (
-                  <UserSearchResult
-                    key={user.userInfo.userId}
-                    user={user.userInfo}
-                  />
-                ))}
-              </div>
-            )}
+            {searchResults.length > 0
+              ? searchResults.map((receiver) => (
+                  <div
+                    key={receiver.userInfo.userId}
+                    className={styles.search__results}
+                    onClick={() =>
+                      handleSearchResultClick({
+                        idTo: receiver.userInfo.userId,
+                        idFrom: user?.userId as string,
+                      })
+                    }
+                  >
+                    <UserSearchResult user={receiver.userInfo} />
+                  </div>
+                ))
+              : null}
           </div>
         </div>
       </div>
