@@ -1,3 +1,7 @@
 .sidebar {
 	max-width: 15%;
 }
+
+.members__heading {
+	font-size: 1.6rem;
+}
