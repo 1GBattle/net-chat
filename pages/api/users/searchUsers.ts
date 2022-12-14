@@ -8,7 +8,7 @@ const searchUsers = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
       const { userQuery } = req.body
 
-      if (userQuery) {
+      if (userQuery as string) {
         const userRef = collection(db, 'users')
         const q = query(userRef, where('userName', '==', userQuery))
 

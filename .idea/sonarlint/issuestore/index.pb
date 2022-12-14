@@ -35,5 +35,27 @@ S
 #styles/FullMessageThread.module.css,8\2\8297718156132c0cbdf5cabd336e665aa1eca742
 C
 pages/_document.tsx,a\d\ada43e48670fd1ae7318859ac38479e031ea9236
+I
+styles/Sidebar.module.css,e\b\eb5ac5becca078af90d541af44f6816b01db048f
+R
+"styles/UserSearchResult.module.css,f\c\fce4125fe83118235c9fc64fc20fec6a9a09d8ed
+H
+pages/api/auth/signup.ts,7\1\7146322ba7c02d0d8d66957f1b9b998a569055e5
+O
+components/UserSearchResult.tsx,8\b\8b655dcc05a4430558e453ba2fbd2d98e4d8195e
+N
+pages/api/users/searchUsers.ts,1\6\169ebd8e80b345e8f90758f33de9daf2239da1c0
+Q
+!styles/NewMessageModal.module.css,2\7\2767c75c4c1b50d0ad1f560ccf10774ec23d177e
+F
+models/MessageModel.ts,6\9\69a5e9d7bbb5afa61ad546d05aae4cb01d633b69
+N
+components/NewMessageModal.tsx,e\9\e9ca92ffcde451f9908d02492e4957b748197c05
 M
 components/OptionsSidebar.tsx,6\8\68fe204f7bbb45a22d513360e46f3b60bd0ad5fe
+?
+pages/index.tsx,b\3\b3357635c26d1b52053382ce7e8a8640d31fedc8
+Z
+*pages/api/messaging/createMessageThread.ts,8\2\826ef05d9e10bd21911f148d7cba404f8d74e86a
+W
+'pages/api/messaging/getMessageThread.ts,9\b\9bc4cf9623b74b67a984aa58fe6128984a22d34a

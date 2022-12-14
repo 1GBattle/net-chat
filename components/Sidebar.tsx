@@ -32,8 +32,6 @@ const Sidebar = () => {
       <div className={`${styles.messageThreads__container}`}>
         <MessageThreadList />
       </div>
-
-      <hr />
     </div>
   )
 }

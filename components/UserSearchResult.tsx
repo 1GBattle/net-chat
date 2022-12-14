@@ -10,7 +10,6 @@ interface Props {
 }
 
 const UserSearchResult: React.FC<Props> = ({ user }) => {
-  console.log(user.userName)
   return (
     <button className={styles.user__search__result}>
       <div className={styles.container}>

@@ -3,6 +3,7 @@ interface MessageModel {
   idTo: string
   content: string
   timestamp: number
+  isRead: boolean
 }
 
 export default MessageModel
